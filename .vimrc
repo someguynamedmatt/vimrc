@@ -67,3 +67,7 @@
 " vim-javascript setup {
     let g:javascript_plugin_jsdoc = 1
 " }
+
+" Set shell to bash (zsh is weird in vim) {
+    set shell=/bin/bash
+" }
