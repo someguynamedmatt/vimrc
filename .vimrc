@@ -42,15 +42,14 @@
 
 
 " History, Undo, and Persistence stuff
-    set backup " No backup files
-    set backupdir=~/.vim/tmp/backups
-    set nowritebackup " samezies!
-    set noswapfile " obvious
+    set backup " Allow for backup files
+    set backupdir=~/.vim/tmp/backups " Where backups are stored
+    set dir=~/.vim/tmp " Set dir for swap files
 
     if has('persistent_undo')
       set undodir=~/.vim/tmp/undo
-      set undolevels=500
-      set undoreload=500
+      set undolevels=1000
+      set undoreload=1000
     endif
     set history=5000
 " }
