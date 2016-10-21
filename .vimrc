@@ -1,5 +1,5 @@
 " Necessaries (spelling?) {
-    set nocompatible              " be iMproved, required
+   " set nocompatible              
 " }
 
 
@@ -9,7 +9,6 @@
     call vundle#begin()
     " Put ALL Plugin stuff here...
     Plugin 'fatih/vim-go'
-    Plugin 'MvanDiemen/ghostbuster'
     Plugin 'terryma/vim-multiple-cursors'
     Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim'}
     Plugin 'scrooloose/nerdtree'
@@ -18,7 +17,10 @@
     Plugin 'pangloss/vim-javascript'
     Plugin 'valloric/youcompleteme'
     Plugin 'leafgarland/typescript-vim'
-    Plugin 'crusoexia/vim-monokai'
+    Plugin 'roosta/srcery'
+    Plugin 'MarcWeber/vim-addon-mw-utils'
+    Plugin 'tomtom/tlib_vim'
+    Plugin 'garbas/vim-snipmate'
 
     call vundle#end()            " required
     filetype plugin indent on    " required
@@ -27,7 +29,7 @@
 
 " General editor settings {
     "set noantialias
-    colorscheme monokai
+    colorscheme srcery
     set guifont=Droid\ Sans\ Mono\ for\ Powerline:h13
     set bg=dark
     set number " Line number
@@ -38,6 +40,8 @@
     set autoread " Auto-update the file if it's been externally edited
     set incsearch " incremental search
     set hlsearch " highlight search terms
+    set matchpairs+=<:>
+    set matchtime=2
 " }
 
 
@@ -70,4 +74,8 @@
 
 " Set shell to bash (zsh is weird in vim) {
     set shell=/bin/bash
+" }
+
+" snipMate {
+   let g:snips_trigger_key='<c-space>' " remap from <Tab> to <c-space> to not conflict with youCompleteMe
 " }
