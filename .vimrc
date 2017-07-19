@@ -14,22 +14,23 @@
     Plugin 'scrooloose/nerdtree'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'tpope/vim-fugitive'
-    Plugin 'pangloss/vim-javascript'
-    Plugin 'valloric/youcompleteme'
-    Plugin 'leafgarland/typescript-vim'
-    Plugin 'roosta/srcery'
     Plugin 'MarcWeber/vim-addon-mw-utils'
     Plugin 'tomtom/tlib_vim'
     Plugin 'garbas/vim-snipmate'
+    Plugin 'editorconfig/editorconfig-vim'
+    Plugin 'crusoexia/vim-javascript-lib'
+    Plugin 'lu-ren/SerialExperimentsLain'
+    Plugin 'jelera/vim-javascript-syntax'
+    Plugin 'othree/yajs.vim' 
+    Plugin 'benekastah/neomake'
+    Plugin 'epilande/neomake-local-eslint.vim'
 
     call vundle#end()            " required
     filetype plugin indent on    " required
 " }
 
-
 " General editor settings {
-    "set noantialias
-    colorscheme srcery
+    colorscheme SerialExperimentsLain
     set guifont=Droid\ Sans\ Mono\ for\ Powerline:h13
     set bg=dark
     set number " Line number
@@ -42,6 +43,8 @@
     set hlsearch " highlight search terms
     set matchpairs+=<:>
     set matchtime=2
+    set cursorline
+    hi CursorLine term=bold cterm=bold guibg=Grey40
 " }
 
 
@@ -76,6 +79,48 @@
     set shell=/bin/bash
 " }
 
-" snipMate {
-   let g:snips_trigger_key='<c-space>' " remap from <Tab> to <c-space> to not conflict with youCompleteMe
+" nerdTree {
+    let mapleader = "'"
+    nmap <leader>nt :NERDTree<cr>
 " }
+
+" Neomake (linting) {
+    autocmd! BufWritePost * Neomake
+    let g:neomake_verbose = 3 
+    let g:neomake_open_list = 2		
+    let g:neomake_list_height = 5		
+        
+    let g:neomake_stylelint = {		
+      \ 'errorformat':		
+      \ '%+P%f,' .		
+      \ '%*\s%l:%c  %t  %m,' .		
+      \ '%-Q'		
+      \ }		
+        
+    let g:neomake_warning_sign = {		
+      \ 'text': 'W',		
+      \ 'texthl': 'GitGutterChangeDefault',		
+      \ }		
+        
+    let g:neomake_error_sign = {		
+      \ 'text': 'E',		
+      \ 'texthl': 'GitGutterDeleteDefault',		
+      \ }		
+        
+    " Prefer local project eslint over global		
+    let g:neomake_javascript_eslint_exe = system('PATH=$(npm bin):$PATH && which eslint | tr -d "\n"')		
+        
+    " Prefer local project stylelint over global		
+    let g:neomake_css_stylelint_exe = system('PATH=$(npm bin):$PATH && which stylelint | tr -d "\n"')		
+        
+    let g:neomake_javascript_enabled_makers = ['eslint']		
+    let g:neomake_jsx_enabled_makers = ['eslint']		
+    let g:neomake_json_enabled_makers = ['jsonlint']		
+    let g:neomake_css_enabled_makers = ['stylelint']		
+    let g:neomake_scss_enabled_makers = ['stylelint']		
+        
+    let g:neomake_css_stylelint_maker = neomake_stylelint		
+    let g:neomake_scss_stylelint_maker = neomake_stylelint		
+
+" }
+
