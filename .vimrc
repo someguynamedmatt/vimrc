@@ -24,13 +24,14 @@
     Plugin 'benekastah/neomake'
     Plugin 'epilande/neomake-local-eslint.vim'
     Plugin 'fatih/vim-go'
+    Plugin 'sickill/vim-monokai'
 
     call vundle#end()            " required
     filetype plugin indent on    " required
 " }
 
 " General editor settings {
-    colorscheme SerialExperimentsLain
+    colorscheme monokai 
     set guifont=Droid\ Sans\ Mono\ for\ Powerline:h13
     set bg=dark
     set number " Line number
@@ -44,8 +45,10 @@
     set matchpairs+=<:>
     set matchtime=2
     set cursorline
-    hi CursorLine term=bold cterm=bold guibg=Grey40
+    hi CursorLine term=bold cterm=bold guibg=Grey20
     hi Normal guibg=NONE ctermbg=NONE
+    set autoindent
+    set smartindent
 " }
 
 
