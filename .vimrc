@@ -8,7 +8,6 @@
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
     " Put ALL Plugin stuff here...
-    Plugin 'fatih/vim-go'
     Plugin 'terryma/vim-multiple-cursors'
     Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim'}
     Plugin 'scrooloose/nerdtree'
@@ -24,6 +23,7 @@
     Plugin 'othree/yajs.vim' 
     Plugin 'benekastah/neomake'
     Plugin 'epilande/neomake-local-eslint.vim'
+    Plugin 'fatih/vim-go'
 
     call vundle#end()            " required
     filetype plugin indent on    " required
@@ -45,6 +45,7 @@
     set matchtime=2
     set cursorline
     hi CursorLine term=bold cterm=bold guibg=Grey40
+    hi Normal guibg=NONE ctermbg=NONE
 " }
 
 
