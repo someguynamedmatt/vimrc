@@ -24,7 +24,11 @@
     Plugin 'benekastah/neomake'
     Plugin 'epilande/neomake-local-eslint.vim'
     Plugin 'fatih/vim-go'
-
+    Plugin 'grvcoelho/vim-javascript-snippets'
+    Plugin 'Raimondi/delimitMate'
+    Plugin 'Valloric/YouCompleteMe'
+    Plugin 'marijnh/tern_for_vim'
+    
     call vundle#end()            " required
     filetype plugin indent on    " required
 " }
@@ -125,3 +129,8 @@
 
 " }
 
+" Tern {
+  let g:tern_show_argument_hints='on_hold'
+  " and 
+  let g:tern_map_keys=1
+" }
