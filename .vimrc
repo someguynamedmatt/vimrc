@@ -29,14 +29,29 @@
     Plugin 'Valloric/YouCompleteMe'
     Plugin 'marijnh/tern_for_vim'
     Plugin 'sickill/vim-monokai'
+    Plugin 'colepeters/spacemacs-theme.vim'
+    Plugin 'cnj4/horseradish256'
+    Plugin 'mhinz/vim-startify'
+    Plugin 'nathanaelkane/vim-indent-guides'
+    Plugin 'leafgarland/typescript-vim'
 
     call vundle#end()            " required
     filetype plugin indent on    " required
 " }
 
 " General editor settings {
-    colorscheme monokai 
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline:h13
+    if (has("termguicolors"))
+      set termguicolors
+    endif
+    if has("gui_running")
+      "colorscheme SerialExperimentsLain
+      colorscheme spacemacs-theme
+    else 
+      "colorscheme SerialExperimentsLain
+      colorscheme spacemacs-theme
+      hi Normal guibg=NONE ctermbg=NONE
+
+    endif
     set bg=dark
     set number " Line number
     syntax on
@@ -50,11 +65,23 @@
     set matchtime=2
     set cursorline
     hi CursorLine term=bold cterm=bold guibg=Grey20
-    hi Normal guibg=NONE ctermbg=NONE
     set autoindent
     set smartindent
+    set encoding=utf8
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline:h13
+    " leader key is SPACE
+    noremap <SPACE> <Nop>
+    let mapleader = " "
+    set backspace=2 " make backspace work like most other apps
 " }
 
+" Tab in Normal-mode for buffer switching {
+    function SwitchBuffer()
+      b#
+    endfunction
+
+    nmap <Tab> :call SwitchBuffer()<CR>
+" }
 
 " History, Undo, and Persistence stuff
     set backup " Allow for backup files
@@ -88,8 +115,7 @@
 " }
 
 " nerdTree {
-    let mapleader = "'"
-    nmap <leader>nt :NERDTree<cr>
+    nmap <leader>nt :NERDTreeToggle<cr>
 " }
 
 " Neomake (linting) {
@@ -136,4 +162,8 @@
   let g:tern_show_argument_hints='on_hold'
   " and 
   let g:tern_map_keys=1
+" }
+
+" vim-indent-guide {
+  nmap <leader>ig :IndentGuidesToggle<cr>
 " }
